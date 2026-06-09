@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NodeViewWrapper, nodeViewProps } from '@halo-dev/richtext-editor'
+import { NodeSelection, NodeViewWrapper, nodeViewProps } from '@halo-dev/richtext-editor'
 import { computed } from 'vue'
 import { getContentWidgetEditorFields } from '@/editor/content-widget-editor-fields'
 import { getContentWidgetDefinitionByTagName } from '@/editor/content-widget-registry'
@@ -21,11 +21,33 @@ const definition = computed(() => getContentWidgetDefinitionByTagName(widget.val
 const title = computed(() => definition.value?.title || widget.value.title || '文章组件')
 
 function updateWidget(nextWidget: ContentWidgetNodeAttrs) {
-  props.updateAttributes({
+  const position = props.getPos()
+  const nextAttrs = {
     tagName: nextWidget.tagName,
     attributes: nextWidget.attributes || {},
     innerHTML: nextWidget.innerHTML || '',
     title: nextWidget.title || props.node.attrs.title,
+  }
+
+  if (typeof position !== 'number') {
+    props.updateAttributes(nextAttrs)
+    return
+  }
+
+  props.editor.commands.command(({ tr }) => {
+    const node = tr.doc.nodeAt(position)
+
+    if (!node || node.type.name !== props.node.type.name) {
+      return false
+    }
+
+    tr.setNodeMarkup(position, undefined, {
+      ...props.node.attrs,
+      ...nextAttrs,
+    })
+    tr.setSelection(NodeSelection.create(tr.doc, position))
+
+    return true
   })
 }
 </script>
@@ -54,6 +76,8 @@ function updateWidget(nextWidget: ContentWidgetNodeAttrs) {
       @mousedown.stop
       @click.stop
       @input.stop
+      @focusin.stop
+      @focusout.stop
       @keydown.stop
       @keyup.stop
     >
