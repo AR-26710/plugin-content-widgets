@@ -5,6 +5,5 @@
     "build:widgets": "pnpm --filter @xhhao/content-widgets build",
     "build:ui": "pnpm --filter ./ui build",
     "install:all": "pnpm install"
-  },
-  "packageManager": "pnpm@10.12.4"
+  }
 }
