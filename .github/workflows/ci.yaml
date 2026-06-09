@@ -12,4 +12,4 @@ jobs:
   ci:
     uses: halo-sigs/reusable-workflows/.github/workflows/plugin-ci.yaml@v4
     with:
-      ui-path: "ui"
+      ui-path: "."
