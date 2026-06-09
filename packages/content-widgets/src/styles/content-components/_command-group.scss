@@ -1,0 +1,48 @@
+.xhhao-com-command-group {
+  overflow: hidden;
+  margin: 1em 0;
+  border: 1px solid var(--xhhao-com-border);
+  border-radius: 0.58em;
+  background: var(--xhhao-com-bg-card);
+
+  .xhhao-com-command-group-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    align-items: center;
+    padding: 0.55em 0.75em;
+    border-bottom: 1px solid var(--xhhao-com-border);
+    color: var(--xhhao-com-text-2);
+  }
+
+  button {
+    display: inline-flex;
+    gap: 0.35em;
+    align-items: center;
+    border: 0;
+    background: none;
+    color: var(--xhhao-com-text-2);
+    cursor: pointer;
+
+    &:hover { color: var(--xhhao-com-primary); }
+  }
+
+  .xhhao-com-command-group-copy-icon,
+  .xhhao-com-command-group-copy-icon svg {
+    width: 1em;
+    height: 1em;
+  }
+
+  .xhhao-com-command-group-body { display: grid; }
+
+  .xhhao-com-command-line {
+    display: flex;
+    gap: 0.8em;
+    padding: 0.55em 0.75em;
+    border-top: 1px solid color-mix(in srgb, var(--xhhao-com-border) 55%, transparent);
+
+    &:first-child { border-top: 0; }
+    span { color: var(--xhhao-com-text-2); }
+    b { overflow-x: auto; font-weight: 600; white-space: nowrap; }
+  }
+}

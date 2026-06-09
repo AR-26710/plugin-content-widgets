@@ -1,0 +1,167 @@
+// ========================================
+// Chat 聊天
+// ========================================
+.xhhao-com-chat {
+  --xhhao-com-chat-avatar-size: 2.35em;
+  --xhhao-com-chat-bubble-width: min(30em, calc(100vw - 7rem));
+
+  display: grid;
+  gap: 1.05em;
+  max-width: min(42em, 100%);
+  margin: 1.25em auto;
+  font-size: 0.92em;
+
+  .xhhao-com-chat-row {
+    display: grid;
+    grid-template-columns: var(--xhhao-com-chat-avatar-size) minmax(0, 1fr);
+    gap: 0.72em;
+    align-items: start;
+    justify-content: start;
+    min-width: 0;
+
+    &.xhhao-com-chat-row-self {
+      grid-template-columns: minmax(0, 1fr) var(--xhhao-com-chat-avatar-size);
+
+      .xhhao-com-chat-avatar {
+        grid-column: 2;
+      }
+
+      .xhhao-com-chat-message {
+        grid-column: 1;
+        grid-row: 1;
+        align-items: flex-end;
+      }
+
+      .xhhao-com-chat-meta {
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+      }
+
+      .xhhao-com-chat-name {
+        text-align: right;
+      }
+
+      .xhhao-com-chat-bubble {
+        border-start-start-radius: 0.9em;
+        border-start-end-radius: 0.32em;
+        background: color-mix(in srgb, var(--xhhao-com-primary) 13%, var(--xhhao-com-bg-card));
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--xhhao-com-primary) 20%, transparent);
+      }
+    }
+
+    &.xhhao-com-chat-row-system {
+      display: flex;
+      justify-content: center;
+      margin-block: 0.05em;
+    }
+  }
+
+  .xhhao-com-chat-avatar {
+    display: grid;
+    place-items: center;
+    width: var(--xhhao-com-chat-avatar-size);
+    height: var(--xhhao-com-chat-avatar-size);
+    overflow: hidden;
+    border-radius: 50%;
+    background: var(--xhhao-com-bg-soft);
+    box-shadow: 0 0.25em 0.8em var(--xhhao-com-shadow);
+    color: var(--xhhao-com-text-2);
+    font-size: 0.9em;
+    font-weight: 800;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .xhhao-com-chat-message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .xhhao-com-chat-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+    max-width: var(--xhhao-com-chat-bubble-width);
+    margin: 0.05em 0 0.28em;
+    min-width: 0;
+  }
+
+  .xhhao-com-chat-name {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--xhhao-com-text-2);
+    font-size: 0.82em;
+    font-weight: 700;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .xhhao-com-chat-badge {
+    flex: 0 0 auto;
+    padding: 0.05em 0.45em;
+    border-radius: 0.35em;
+    background: color-mix(in srgb, var(--xhhao-com-primary) 18%, var(--xhhao-com-bg-card));
+    color: var(--xhhao-com-primary);
+    font-size: 0.72em;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .xhhao-com-chat-bubble {
+    width: fit-content;
+    max-width: var(--xhhao-com-chat-bubble-width);
+    padding: 0.58em 0.82em;
+    border-radius: 0.9em;
+    border-start-start-radius: 0.32em;
+    background: var(--xhhao-com-bg-card);
+    box-shadow: 0 0.28em 0.8em var(--xhhao-com-shadow);
+    color: var(--xhhao-com-text);
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+
+    > *:first-child { margin-top: 0; }
+    > *:last-child { margin-bottom: 0; }
+  }
+
+  .xhhao-com-chat-system {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45em;
+    max-width: min(30em, 100%);
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    background: var(--xhhao-com-bg-soft);
+    color: var(--xhhao-com-text-2);
+    font-size: 0.8em;
+    line-height: 1.5;
+
+    span {
+      color: var(--xhhao-com-text);
+      font-weight: 800;
+    }
+
+    > * { margin: 0; }
+  }
+}
+
+@media (max-width: 560px) {
+  .xhhao-com-chat {
+    --xhhao-com-chat-avatar-size: 2.15em;
+    --xhhao-com-chat-bubble-width: min(25em, calc(100vw - 6rem));
+    max-width: 100%;
+    margin-inline: 0;
+
+    .xhhao-com-chat-row {
+      gap: 0.58em;
+    }
+  }
+}

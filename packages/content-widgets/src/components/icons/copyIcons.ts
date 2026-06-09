@@ -1,0 +1,3 @@
+export const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path d="M0 0h256v256H0z" fill="none"/><path fill="currentColor" d="M216 36H88a12 12 0 0 0-12 12v28H48a12 12 0 0 0-12 12v128a12 12 0 0 0 12 12h128a12 12 0 0 0 12-12v-28h28a12 12 0 0 0 12-12V48a12 12 0 0 0-12-12m-52 168H60V100h104Zm40-40h-16V88a12 12 0 0 0-12-12h-76V60h104Z"/></svg>`;
+
+export const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path d="M0 0h256v256H0z" fill="none"/><path fill="currentColor" d="m229.66 77.66l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L93.17 180L212.69 60.69a12 12 0 0 1 17 17Z"/></svg>`;

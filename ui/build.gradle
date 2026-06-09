@@ -1,0 +1,51 @@
+plugins {
+    id 'base'
+    id "com.github.node-gradle.node" version "7.1.0"
+}
+
+group 'com.xhhao.contentwidgets.ui'
+
+node {
+    nodeProjectDir = rootProject.projectDir
+}
+
+tasks.register('pnpmBuildWidgets', PnpmTask) {
+    group = 'build'
+    description = 'Build the shared Svelte content widgets package using pnpm'
+    args = ['--filter', '@xhhao/content-widgets', 'build']
+    dependsOn tasks.named('pnpmInstall')
+    inputs.dir(rootProject.layout.projectDirectory.dir('packages/content-widgets/src'))
+    inputs.files(fileTree(
+        dir: rootProject.layout.projectDirectory.dir('packages/content-widgets').asFile,
+        includes: ['*.cjs', '*.ts', '*.js', '*.json', '*.yaml']))
+    outputs.dir(rootProject.layout.projectDirectory.dir('packages/content-widgets/dist'))
+    outputs.dir(rootProject.layout.projectDirectory.dir('src/main/resources/static'))
+}
+
+tasks.register('pnpmBuild', PnpmTask) {
+    group = 'build'
+    description = 'Build the UI project using pnpm'
+    args = ['--filter', './ui', 'build']
+    dependsOn tasks.named('pnpmBuildWidgets')
+    inputs.dir(rootProject.layout.projectDirectory.dir('packages/content-widgets/src'))
+    inputs.dir(layout.projectDirectory.dir('src'))
+    inputs.files(fileTree(
+        dir: layout.projectDirectory,
+        includes: ['*.cjs', '*.ts', '*.js', '*.json', '*.yaml']))
+    outputs.dir(layout.buildDirectory.dir('dist'))
+}
+
+tasks.register('pnpmCheck', PnpmTask) {
+    group = 'verification'
+    description = 'Run unit tests for the UI project using pnpm'
+    args = ['--filter', './ui', 'test:unit']
+    dependsOn tasks.named('pnpmInstall')
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('pnpmCheck')
+}
+
+tasks.named('assemble') {
+    dependsOn tasks.named('pnpmBuild')
+}

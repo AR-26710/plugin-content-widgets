@@ -1,0 +1,17 @@
+.xhhao-com-annotation {
+  display: inline;
+  border-bottom: 2px dotted var(--xhhao-com-primary);
+  color: var(--xhhao-com-text);
+
+  .xhhao-com-annotation-note {
+    display: inline-block;
+    margin-inline-start: 0.35em;
+    padding: 0.05em 0.45em;
+    border-radius: 0.35em;
+    background: var(--xhhao-com-primary-soft);
+    color: var(--xhhao-com-primary);
+    font-size: 0.78em;
+    font-weight: 800;
+    vertical-align: 0.08em;
+  }
+}

@@ -1,0 +1,35 @@
+// ========================================
+// Quote 引用
+// ========================================
+.xhhao-com-quote {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--xhhao-com-text-2);
+
+  p { margin: 0; }
+
+  .xhhao-com-quote-icon {
+    position: relative;
+    opacity: 0.5;
+    min-height: 0.5em;
+    margin-bottom: -0.5em;
+    mask-image: linear-gradient(#FFF, transparent);
+    font-size: 4rem;
+    transition: all 0.2s;
+    z-index: -1;
+  }
+
+  .xhhao-com-quote-icon span,
+  .xhhao-com-quote-icon svg,
+  .xhhao-com-quote-icon img {
+    display: block;
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+  }
+
+  &:hover .xhhao-com-quote-icon {
+    opacity: 1;
+    transform: translateY(-0.5rem);
+  }
+}

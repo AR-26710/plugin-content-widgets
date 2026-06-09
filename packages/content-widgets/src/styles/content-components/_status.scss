@@ -1,0 +1,28 @@
+.xhhao-com-status {
+  --xhhao-com-status-color: var(--xhhao-com-primary);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  max-width: 100%;
+  padding: 0.28em 0.58em;
+  border-radius: 0.42em;
+  background: color-mix(in srgb, var(--xhhao-com-status-color) 10%, transparent);
+  color: var(--xhhao-com-status-color);
+  font-size: 0.88em;
+  line-height: 1.35;
+  vertical-align: middle;
+
+  .xhhao-com-status-label {
+    color: var(--xhhao-com-text-2);
+    font-weight: 700;
+  }
+
+  .xhhao-com-status-value {
+    min-width: 0;
+    overflow: hidden;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

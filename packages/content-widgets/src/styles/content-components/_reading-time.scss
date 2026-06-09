@@ -1,0 +1,13 @@
+.xhhao-com-reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.25em 0.55em;
+  border-radius: 999px;
+  background: var(--xhhao-com-bg-2);
+  color: var(--xhhao-com-text-2);
+  font-size: 0.86em;
+
+  strong { color: var(--xhhao-com-text); }
+  em { font-style: normal; opacity: 0.72; }
+}

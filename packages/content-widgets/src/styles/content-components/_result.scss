@@ -1,0 +1,31 @@
+.xhhao-com-result {
+  --xhhao-com-result-color: #2fb579;
+
+  display: grid;
+  grid-template-columns: 2.2em minmax(0, 1fr);
+  gap: 0.7em;
+  margin: 1em 0;
+  padding: 0.85em;
+  border-radius: 0.68em;
+  background: color-mix(in srgb, var(--xhhao-com-result-color) 8%, var(--xhhao-com-bg-card));
+  color: var(--xhhao-com-text);
+
+  &.xhhao-com-result-type-info { --xhhao-com-result-color: #2f8df4; }
+  &.xhhao-com-result-type-warning { --xhhao-com-result-color: #f59e0b; }
+  &.xhhao-com-result-type-error { --xhhao-com-result-color: #ef4444; }
+
+  .xhhao-com-result-icon {
+    display: grid;
+    place-items: center;
+    width: 2.2em;
+    height: 2.2em;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--xhhao-com-result-color) 14%, transparent);
+    color: var(--xhhao-com-result-color);
+
+    svg { width: 1.2em; height: 1.2em; }
+  }
+
+  .xhhao-com-result-main { display: grid; gap: 0.15em; }
+  strong { color: var(--xhhao-com-result-color); }
+}

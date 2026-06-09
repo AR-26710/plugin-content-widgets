@@ -1,0 +1,25 @@
+// ========================================
+// Key 按键
+// ========================================
+.xhhao-com-key {
+  display: inline-block;
+  margin: 0.1em;
+  padding: 0 0.2em 0.1em;
+  border-radius: 0.2em;
+  box-shadow: inset 0 -0.15em 0 var(--xhhao-com-bg-soft);
+  background-color: var(--xhhao-com-bg-soft);
+  font-family: var(--xhhao-com-font-monospace);
+  font-size: 0.9em;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--xhhao-com-text-2);
+  transition: all 0.1s;
+  user-select: none;
+
+  &:active {
+    box-shadow: inset 0 -0.1em 0 var(--xhhao-com-primary);
+    background-color: var(--xhhao-com-primary-soft);
+    color: var(--xhhao-com-primary);
+    transform: translateY(0.05em);
+  }
+}

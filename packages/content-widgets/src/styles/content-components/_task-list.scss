@@ -1,0 +1,46 @@
+.xhhao-com-task-list {
+  display: grid;
+  gap: 0.55em;
+  margin: 1em 0;
+  padding: 0;
+  list-style: none;
+
+  .xhhao-com-task {
+    display: grid;
+    grid-template-columns: 1.25em minmax(0, 1fr);
+    gap: 0.55em;
+    align-items: start;
+    padding: 0.48em 0.62em;
+    border-radius: 0.48em;
+    background: var(--xhhao-com-bg-2);
+    color: var(--xhhao-com-text);
+
+    &.xhhao-com-task-checked {
+      color: var(--xhhao-com-text-2);
+
+      .xhhao-com-task-content {
+        text-decoration: line-through;
+      }
+
+      .xhhao-com-task-box {
+        border-color: var(--xhhao-com-primary);
+        background: var(--xhhao-com-primary);
+        color: #fff;
+      }
+    }
+  }
+
+  .xhhao-com-task-box {
+    display: grid;
+    place-items: center;
+    width: 1.1em;
+    height: 1.1em;
+    margin-top: 0.22em;
+    border: 1px solid var(--xhhao-com-border);
+    border-radius: 0.28em;
+    background: var(--xhhao-com-bg-card);
+    font-size: 0.78em;
+    font-weight: 800;
+    line-height: 1;
+  }
+}

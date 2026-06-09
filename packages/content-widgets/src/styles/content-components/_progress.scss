@@ -1,0 +1,41 @@
+// ========================================
+// Progress 进度条
+// ========================================
+.xhhao-com-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin: 1em 0;
+  font-size: 0.9em;
+
+  .xhhao-com-progress-label {
+    flex-shrink: 0;
+    min-width: 4em;
+    color: var(--xhhao-com-text-2);
+  }
+
+  .xhhao-com-progress-bar {
+    --xhhao-com-progress-color: var(--xhhao-com-primary);
+
+    flex-grow: 1;
+    height: 0.6em;
+    border-radius: 1em;
+    background-color: var(--xhhao-com-bg-soft);
+    overflow: hidden;
+  }
+
+  .xhhao-com-progress-fill {
+    height: 100%;
+    border-radius: 1em;
+    background: linear-gradient(90deg, var(--xhhao-com-progress-color), color-mix(in srgb, var(--xhhao-com-progress-color), white 20%));
+    transition: width 0.5s ease-out;
+  }
+
+  .xhhao-com-progress-text {
+    flex-shrink: 0;
+    min-width: 3em;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: var(--xhhao-com-text-2);
+  }
+}

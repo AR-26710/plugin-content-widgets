@@ -1,0 +1,22 @@
+# Refer https://docs.halo.run/developer-guide/plugin/basics/manifest
+
+apiVersion: plugin.halo.run/v1alpha1
+kind: Plugin
+metadata:
+  # The name defines how the plugin is invoked, A unique name
+  name: content-widgets
+spec:
+  enabled: true
+  requires: ">=2.23.0"
+  author:
+    name: Handsome
+    website: https://www.xhhao.com
+  logo: logo.svg
+  homepage: https://www.xhhao.com
+  repo: https://www.xhhao.com
+  issues: https://www.xhhao.com
+  displayName: "文章组件"
+  description: "为 Halo 文章提供一组可在编辑器中快速插入、前台自动渲染的内容增强组件。"
+  license:
+    - name: "GPL-3.0"
+      url: "https://www.xhhao.com"

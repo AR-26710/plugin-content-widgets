@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文章组件 Preview</title>
+    <link rel="stylesheet" href="./dist/content-widgets.css" />
+    <script src="./dist/content-widgets.iife.js"></script>
+
+    <style>
+      :root { color-scheme: light; }
+
+      body {
+        margin: 0 auto;
+        max-width: 1024px;
+        padding: 2rem;
+        color: #111827;
+        font-family:
+          ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      h1,
+      h2 { line-height: 1.25; }
+
+      section { margin: 2.2rem 0; }
+      section > * { margin: 1rem 0; }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>文章组件</h1>
+
+    <section>
+      <h2>Alert</h2>
+      <xhhao-com-alert type="tip" title="提醒">这是一个从主题迁移到 Svelte 组件包的提示框。</xhhao-com-alert>
+      <xhhao-com-alert type="info" title="信息" card>卡片模式提示框。</xhhao-com-alert>
+      <xhhao-com-alert type="question" title="问题">这是一个问题提示框。</xhhao-com-alert>
+      <xhhao-com-alert type="warning" title="警告">警告状态提示框。</xhhao-com-alert>
+      <xhhao-com-alert type="error" title="错误">错误状态提示框。</xhhao-com-alert>
+    </section>
+
+    <section>
+      <h2>Badge</h2>
+      <p>
+        <xhhao-com-badge type="success">已完成</xhhao-com-badge>
+        <xhhao-com-badge type="info">Halo 2.23</xhhao-com-badge>
+        <xhhao-com-badge type="warning" outline>Beta</xhhao-com-badge>
+        <xhhao-com-badge type="error">重要</xhhao-com-badge>
+      </p>
+    </section>
+
+    <section>
+      <h2>Annotation</h2>
+      <p>
+        <xhhao-com-annotation note="迁移重点">插件不能依赖主题入口文件。</xhhao-com-annotation>
+      </p>
+    </section>
+
+    <section>
+      <h2>CommandGroup</h2>
+      <xhhao-com-command-group title="构建组件包">
+        <xhhao-com-command prompt="$">pnpm install</xhhao-com-command>
+        <xhhao-com-command prompt="$">pnpm run check</xhhao-com-command>
+        <xhhao-com-command prompt="$">pnpm run build</xhhao-com-command>
+      </xhhao-com-command-group>
+    </section>
+
+    <section>
+      <h2>Result</h2>
+      <xhhao-com-result type="success" title="构建成功">
+        已生成 content-widgets.iife.js 和 content-widgets.css。
+      </xhhao-com-result>
+    </section>
+
+    <section>
+      <h2>ReadingTime</h2>
+      <p><xhhao-com-reading-time words="1280"></xhhao-com-reading-time></p>
+    </section>
+
+    <section>
+      <h2>Button</h2>
+      <p>
+        <xhhao-com-button href="https://www.xhhao.com" target="_blank">访问 Handsome</xhhao-com-button>
+        <xhhao-com-button type="secondary">次要按钮</xhhao-com-button>
+        <xhhao-com-button type="ghost">幽灵按钮</xhhao-com-button>
+      </p>
+    </section>
+
+    <section>
+      <h2>Tab</h2>
+      <xhhao-com-tab tabs="概览,代码,说明" active="1" center>
+        <xhhao-com-tab-panel><p>第一个标签页内容。</p></xhhao-com-tab-panel>
+        <xhhao-com-tab-panel><xhhao-com-copy code="pnpm run build"></xhhao-com-copy></xhhao-com-tab-panel>
+        <xhhao-com-tab-panel><ul><li>支持嵌套 HTML</li><li>支持默认激活项</li></ul></xhhao-com-tab-panel>
+      </xhhao-com-tab>
+    </section>
+
+    <section>
+      <h2>Copy</h2>
+      <xhhao-com-copy code="pnpm run check && pnpm run build"></xhhao-com-copy>
+      <xhhao-com-copy prompt=">" code="echo xhhao-com"></xhhao-com-copy>
+    </section>
+
+    <section>
+      <h2>Folding</h2>
+      <xhhao-com-folding title="展开查看折叠内容">
+        <p>折叠面板可以放普通段落、列表和其他内容。</p>
+        <ul>
+          <li>保持原来的标签用法</li>
+          <li>交互由 Svelte 管理</li>
+        </ul>
+      </xhhao-com-folding>
+    </section>
+
+    <section>
+      <h2>Tip</h2>
+      <p>行内提示：<xhhao-com-tip tip="来自文章组件插件">悬停这里</xhhao-com-tip>。</p>
+    </section>
+
+    <section>
+      <h2>Blur</h2>
+      <p>模糊文字：<xhhao-com-blur>这里有一点剧透</xhhao-com-blur>。</p>
+    </section>
+
+    <section>
+      <h2>Timeline</h2>
+      <xhhao-com-timeline>
+        <xhhao-com-timeline-item time="09:00">开始迁移组件。</xhhao-com-timeline-item>
+        <xhhao-com-timeline-item time="10:30">完成 Svelte 挂载器。</xhhao-com-timeline-item>
+        <xhhao-com-timeline-item time="11:00">生成独立 JS/CSS。</xhhao-com-timeline-item>
+      </xhhao-com-timeline>
+    </section>
+
+    <section>
+      <h2>Chat</h2>
+      <xhhao-com-chat>
+        <xhhao-com-chat-item
+          name="Handsome"
+          badge="LV10 大能"
+          avatar="https://api.dicebear.com/9.x/notionists/svg?seed=Handsome&backgroundColor=dbeafe"
+        >这个组件包能独立运行了吗？</xhhao-com-chat-item>
+        <xhhao-com-chat-item
+          name="文章组件"
+          badge="插件助手"
+          avatar="https://api.dicebear.com/9.x/notionists/svg?seed=Widgets&backgroundColor=dcfce7"
+          self
+        >可以，加载 dist 产物即可。</xhhao-com-chat-item>
+        <xhhao-com-chat-item name="System" system>无需实现 PJAX，只暴露 mount。</xhhao-com-chat-item>
+      </xhhao-com-chat>
+    </section>
+
+    <section>
+      <h2>Quote</h2>
+      <xhhao-com-quote icon="“">
+        <p>组件包只负责渲染和交互，主题负责页面生命周期。</p>
+      </xhhao-com-quote>
+    </section>
+
+    <section>
+      <h2>Key</h2>
+      <p>快捷键：<xhhao-com-key cmd shift code="K"></xhhao-com-key>。</p>
+    </section>
+
+    <section>
+      <h2>CardList</h2>
+      <xhhao-com-card-list>
+        <ul>
+          <li>Alert</li>
+          <li>Copy</li>
+          <li>Timeline</li>
+          <li>Stepper</li>
+        </ul>
+      </xhhao-com-card-list>
+    </section>
+
+    <section>
+      <h2>Pic</h2>
+      <xhhao-com-pic
+        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+        caption="Content widgets preview"
+        width="100%"
+      ></xhhao-com-pic>
+    </section>
+
+    <section>
+      <h2>Progress</h2>
+      <xhhao-com-progress label="迁移进度" value="78" color="#3A7"></xhhao-com-progress>
+      <xhhao-com-progress label="样式独立" value="92" color="#3AF"></xhhao-com-progress>
+    </section>
+
+    <section>
+      <h2>EmojiClock</h2>
+      <p>当前时间：<xhhao-com-emoji-clock></xhhao-com-emoji-clock>。</p>
+    </section>
+
+    <section>
+      <h2>Status</h2>
+      <p>
+        <xhhao-com-status label="Halo" value=">= 2.23" type="info"></xhhao-com-status>
+        <xhhao-com-status label="状态" value="已完成" type="success"></xhhao-com-status>
+      </p>
+    </section>
+
+    <section>
+      <h2>TaskList</h2>
+      <xhhao-com-task-list>
+        <xhhao-com-task checked>完成 Svelte 内容组件包</xhhao-com-task>
+        <xhhao-com-task checked>统一 xhhao-com 标签协议</xhhao-com-task>
+        <xhhao-com-task>接入 Halo 插件前台资源注入</xhhao-com-task>
+      </xhhao-com-task-list>
+    </section>
+
+    <section>
+      <h2>Compare</h2>
+      <xhhao-com-compare left-title="主题内置" right-title="插件独立">
+        <div><p>依赖主题入口和主题构建。</p></div>
+        <div><p>插件注入 JS/CSS，主题只负责内容生命周期。</p></div>
+      </xhhao-com-compare>
+    </section>
+
+    <section>
+      <h2>Split</h2>
+      <xhhao-com-split cols="2" gap="1rem">
+        <div><strong>左栏</strong><p>分栏组件第一列。</p></div>
+        <div><strong>右栏</strong><p>分栏组件第二列。</p></div>
+      </xhhao-com-split>
+    </section>
+
+    <section>
+      <h2>Stepper</h2>
+      <xhhao-com-stepper>
+        <xhhao-com-step title="提取组件">把 Preact 行为迁移为 Svelte 组件。</xhhao-com-step>
+        <xhhao-com-step title="独立样式">从主题 SCSS 中抽出组件 CSS。</xhhao-com-step>
+        <xhhao-com-step title="插件接入">后续由 Halo 插件注入资源。</xhhao-com-step>
+      </xhhao-com-stepper>
+    </section>
+
+    <section>
+      <h2>Note</h2>
+      <div class="demo-grid">
+        <xhhao-com-note color="yellow">黄色便签。</xhhao-com-note>
+        <xhhao-com-note color="green" rotate>绿色旋转便签。</xhhao-com-note>
+        <xhhao-com-note color="blue">蓝色便签。</xhhao-com-note>
+        <xhhao-com-note color="pink" rotate>粉色旋转便签。</xhhao-com-note>
+      </div>
+    </section>
+  </body>
+</html>

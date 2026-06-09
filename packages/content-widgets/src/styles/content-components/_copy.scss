@@ -1,0 +1,79 @@
+// ========================================
+// Copy 复制命令
+// ========================================
+.xhhao-com-copy {
+  display: flex;
+  overflow: clip;
+  margin: 0.5rem 0;
+  border: 1px solid var(--xhhao-com-border);
+  border-radius: 4px;
+  background-color: var(--xhhao-com-bg-card);
+  font-size: 0.8rem;
+  line-height: 2.5;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: var(--xhhao-com-primary);
+    outline: 0.2em solid var(--xhhao-com-primary-soft);
+
+    .xhhao-com-copy-prompt {
+      border-inline-end-color: var(--xhhao-com-primary);
+      background-color: var(--xhhao-com-primary-soft);
+      color: var(--xhhao-com-primary);
+    }
+  }
+
+  .xhhao-com-copy-prompt {
+    flex-shrink: 0;
+    padding: 0 1em;
+    border-inline-end: 1px solid var(--xhhao-com-border);
+    background-color: var(--xhhao-com-bg-2);
+    color: var(--xhhao-com-text-2);
+    transition: all 0.2s;
+  }
+
+  .xhhao-com-copy-code {
+    flex-grow: 1;
+    position: relative;
+    overflow-x: auto;
+    padding: 0 1em;
+    outline: none;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+      background-color: transparent;
+    }
+  }
+
+  .xhhao-com-copy-btn {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    height: 2.5em;
+    width: 2.5em;
+    margin-inline-start: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--xhhao-com-text-2);
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover { color: var(--xhhao-com-primary); }
+  }
+
+  .xhhao-com-copy-icon {
+    display: grid;
+    place-items: center;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+
+    svg {
+      display: block;
+      width: 1em;
+      height: 1em;
+    }
+  }
+}

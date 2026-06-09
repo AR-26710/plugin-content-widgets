@@ -1,0 +1,60 @@
+// ========================================
+// Stepper 步骤
+// ========================================
+.xhhao-com-stepper {
+  margin: 1.5em 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: stepper;
+
+  .xhhao-com-stepper-item {
+    display: flex;
+    gap: 1em;
+    position: relative;
+    padding-bottom: 1.5em;
+
+    &:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: 1em;
+      top: 2.2em;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--xhhao-com-border);
+    }
+
+    &:last-child { padding-bottom: 0; }
+  }
+
+  .xhhao-com-stepper-marker {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: var(--xhhao-com-primary);
+    font-size: 0.9em;
+    font-weight: bold;
+    color: white;
+  }
+
+  .xhhao-com-stepper-content {
+    flex-grow: 1;
+    padding-top: 0.2em;
+  }
+
+  .xhhao-com-stepper-title {
+    font-weight: 600;
+    color: var(--xhhao-com-text);
+    margin-bottom: 0.3em;
+  }
+
+  .xhhao-com-stepper-body {
+    font-size: 0.9em;
+    color: var(--xhhao-com-text-2);
+
+    p { margin: 0.5em 0; }
+  }
+}

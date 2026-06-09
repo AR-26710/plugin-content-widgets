@@ -1,0 +1,46 @@
+.xhhao-com-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8em;
+  margin: 1.25em 0;
+
+  .xhhao-com-compare-panel {
+    overflow: hidden;
+    margin: 0;
+    border-radius: 0.6em;
+    background: var(--xhhao-com-bg-card);
+    box-shadow: inset 0 0 0 1px var(--xhhao-com-border);
+  }
+
+  .xhhao-com-compare-title {
+    padding: 0.52em 0.78em;
+    background: var(--xhhao-com-bg-soft);
+    color: var(--xhhao-com-text-2);
+    font-size: 0.86em;
+    font-weight: 800;
+  }
+
+  .xhhao-com-compare-after .xhhao-com-compare-title {
+    background: color-mix(in srgb, var(--xhhao-com-primary) 12%, transparent);
+    color: var(--xhhao-com-primary);
+  }
+
+  .xhhao-com-compare-body {
+    padding: 0.8em;
+    color: var(--xhhao-com-text);
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .xhhao-com-compare {
+    grid-template-columns: 1fr;
+  }
+}

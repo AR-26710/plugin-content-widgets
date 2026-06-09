@@ -1,0 +1,75 @@
+// ========================================
+// Alert 警告提示框
+// ========================================
+.xhhao-com-alert {
+  margin: 1em 0;
+  padding: 0.2em 0.8em;
+  border-radius: 0.5em;
+  font-size: 0.9em;
+  background-color: var(--xhhao-com-bg-card);
+  background-image:
+    radial-gradient(circle at 4em -25em, var(--xhhao-com-primary), transparent 30em),
+    linear-gradient(var(--xhhao-com-primary) -2000%, transparent);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--xhhao-com-primary) 20%, transparent);
+  }
+
+  @supports (color: color-mix(in srgb, transparent, transparent)) {
+    --xhhao-com-primary-soft: color-mix(in srgb, var(--xhhao-com-primary) 15%, transparent);
+  }
+
+  &.xhhao-com-alert-no-gradient {
+    background-image: none;
+  }
+
+  &.xhhao-com-alert-card {
+    padding: 0.8em 1.2em;
+    border-radius: 0.75em;
+    box-shadow:
+      0 2px 8px color-mix(in srgb, var(--xhhao-com-primary) 15%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, var(--xhhao-com-primary) 20%, transparent);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 6px 16px color-mix(in srgb, var(--xhhao-com-primary) 25%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--xhhao-com-primary) 30%, transparent);
+    }
+  }
+
+  .xhhao-com-alert-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0.5em 0;
+    font-weight: bold;
+    color: var(--xhhao-com-primary);
+
+    p { margin: 0; }
+  }
+
+  .xhhao-com-alert-title-icon {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 1em;
+    height: 1em;
+    color: currentcolor;
+    line-height: 1;
+
+    svg,
+    img {
+      display: block;
+      width: 1em;
+      height: 1em;
+      object-fit: contain;
+    }
+  }
+
+  .xhhao-com-alert-body {
+    p:last-child { margin-bottom: 0.5em; }
+  }
+}

@@ -1,0 +1,21 @@
+.xhhao-com-badge {
+  --xhhao-com-badge-color: var(--xhhao-com-primary);
+
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--xhhao-com-badge-color) 14%, transparent);
+  color: var(--xhhao-com-badge-color);
+  font-size: 0.82em;
+  font-weight: 700;
+  line-height: 1.5;
+  vertical-align: 0.08em;
+
+  &.xhhao-com-badge-outline {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--xhhao-com-badge-color) 38%, transparent);
+  }
+}
