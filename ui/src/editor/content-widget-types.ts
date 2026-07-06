@@ -26,7 +26,7 @@ export interface ContentWidgetInsertTarget {
   range?: Range
 }
 
-export type ContentWidgetEditorFieldType = 'text' | 'textarea' | 'select' | 'checkbox' | 'list'
+export type ContentWidgetEditorFieldType = 'text' | 'textarea' | 'select' | 'checkbox' | 'attachment' | 'list'
 export type ContentWidgetEditorFieldSource = 'attribute' | 'innerHTML' | 'children'
 export type ContentWidgetEditorListItemFieldSource = 'attribute' | 'content'
 
@@ -42,6 +42,7 @@ export interface ContentWidgetEditorListItemField {
   source: ContentWidgetEditorListItemFieldSource
   placeholder?: string
   options?: ContentWidgetEditorFieldOption[]
+  accepts?: string[]
 }
 
 export interface ContentWidgetEditorListItemValue {
@@ -61,6 +62,7 @@ export interface ContentWidgetEditorField {
   source: ContentWidgetEditorFieldSource
   placeholder?: string
   options?: ContentWidgetEditorFieldOption[]
+  accepts?: string[]
   childTagName?: string
   wrapperTagName?: string
   addLabel?: string

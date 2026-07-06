@@ -1,0 +1,91 @@
+// ========================================
+// PDF 预览
+// ========================================
+.xhhao-com-pdf {
+  --xhhao-com-pdf-radius: var(--xhhao-com-radius, 8px);
+  --xhhao-com-pdf-border: var(--xhhao-com-border, 1px solid #e5e7eb);
+  --xhhao-com-pdf-bg: var(--xhhao-com-bg, #fff);
+  --xhhao-com-pdf-header-bg: #f9fafb;
+  --xhhao-com-pdf-text: var(--xhhao-com-text, #374151);
+  --xhhao-com-pdf-text-2: var(--xhhao-com-text-2, #9ca3af);
+
+  border: var(--xhhao-com-pdf-border);
+  border-radius: var(--xhhao-com-pdf-radius);
+  overflow: hidden;
+  background: var(--xhhao-com-pdf-bg);
+
+  .xhhao-com-pdf__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0.75em;
+    background: var(--xhhao-com-pdf-header-bg);
+    border-bottom: var(--xhhao-com-pdf-border);
+  }
+
+  .xhhao-com-pdf__icon {
+    width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
+    color: var(--xhhao-com-pdf-text-2);
+  }
+
+  .xhhao-com-pdf__title {
+    flex: 1;
+    font-size: 0.875em;
+    font-weight: 500;
+    color: var(--xhhao-com-pdf-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .xhhao-com-pdf__download {
+    display: flex;
+    align-items: center;
+    color: var(--xhhao-com-pdf-text-2);
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--xhhao-com-pdf-text);
+    }
+
+    svg {
+      width: 1.1em;
+      height: 1.1em;
+    }
+  }
+
+  .xhhao-com-pdf__body {
+    width: 100%;
+    height: 500px;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  }
+
+  .xhhao-com-pdf__fallback {
+    display: block;
+    padding: 0.5em 0.75em;
+    font-size: 0.8em;
+    color: var(--xhhao-com-pdf-text-2);
+    text-align: center;
+    border-top: var(--xhhao-com-pdf-border);
+    background: var(--xhhao-com-pdf-header-bg);
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--xhhao-com-pdf-text);
+    }
+  }
+}
+
+// Dark mode
+.dark .xhhao-com-pdf,
+[data-color-scheme="dark"] .xhhao-com-pdf {
+  --xhhao-com-pdf-header-bg: rgba(255, 255, 255, 0.05);
+}

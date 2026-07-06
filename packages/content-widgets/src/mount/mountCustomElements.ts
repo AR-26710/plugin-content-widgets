@@ -12,6 +12,7 @@ import EmojiClock from "../components/EmojiClock.svelte";
 import Folding from "../components/Folding.svelte";
 import Key from "../components/Key.svelte";
 import Note from "../components/Note.svelte";
+import Pdf from "../components/Pdf.svelte";
 import Pic from "../components/Pic.svelte";
 import Progress from "../components/Progress.svelte";
 import Quote from "../components/Quote.svelte";
@@ -113,6 +114,10 @@ export function mountCustomElements(root: ParentNode = document) {
 
   root.querySelectorAll<HTMLElement>("xhhao-com-card-list").forEach((element) => {
     mountComponent(element, CardList, { content: innerHtml(element) });
+  });
+
+  root.querySelectorAll<HTMLElement>("xhhao-com-pdf").forEach((element) => {
+    mountComponent(element, Pdf, parseProps(element));
   });
 
   root.querySelectorAll<HTMLElement>("xhhao-com-pic").forEach((element) => {

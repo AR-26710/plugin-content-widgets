@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import {
   createDefaultListItem,
   getContentWidgetFieldValue,
@@ -11,6 +12,7 @@ import type {
   ContentWidgetEditorFieldValue,
   ContentWidgetNodeAttrs,
 } from '@/editor/content-widget-types'
+import { type AttachmentLike } from '@halo-dev/ui-shared'
 
 const props = defineProps<{
   widget: ContentWidgetNodeAttrs
@@ -21,6 +23,10 @@ const props = defineProps<{
 const emit = defineEmits<{
   update: [widget: ContentWidgetNodeAttrs]
 }>()
+
+const attachmentSelectorVisible = ref(false)
+const activeAttachmentField = ref<ContentWidgetEditorField | ContentWidgetEditorListItemField | null>(null)
+const activeAttachmentItemIndex = ref<number | null>(null)
 
 function emitFieldValue(value: ContentWidgetEditorFieldValue) {
   emit('update', setContentWidgetFieldValue(props.widget, props.field, value))
@@ -57,6 +63,47 @@ function handlePrimitiveInput(event: Event) {
   emitFieldValue(
     props.field.type === 'checkbox' ? (target as HTMLInputElement).checked : target.value,
   )
+}
+
+function openAttachmentSelector() {
+  activeAttachmentField.value = props.field
+  activeAttachmentItemIndex.value = null
+  attachmentSelectorVisible.value = true
+}
+
+function onAttachmentSelect(attachments: AttachmentLike[]) {
+  const attachment = attachments[0]
+  if (!attachment) return
+
+  let url = ''
+  if (typeof attachment === 'string') {
+    url = attachment
+  } else {
+    url = (attachment as any).status?.permalink || (attachment as any).url || ''
+  }
+
+  if (activeAttachmentItemIndex.value !== null && activeAttachmentField.value) {
+    const items = cloneItems()
+    const item = items[activeAttachmentItemIndex.value]
+    if (item) {
+      if (activeAttachmentField.value.source === 'content') {
+        item.content = url
+      } else {
+        item.attributes[activeAttachmentField.value.name] = url
+      }
+      emitFieldValue(items)
+    }
+  } else {
+    emitFieldValue(url)
+  }
+
+  attachmentSelectorVisible.value = false
+}
+
+function openItemAttachmentSelector(index: number, field: ContentWidgetEditorListItemField) {
+  activeAttachmentField.value = field
+  activeAttachmentItemIndex.value = index
+  attachmentSelectorVisible.value = true
 }
 
 function itemFieldValue(item: ContentWidgetEditorListItemValue, field: ContentWidgetEditorListItemField) {
@@ -199,6 +246,22 @@ function moveItem(index: number, offset: number) {
         @change="handlePrimitiveInput"
       />
 
+      <component
+        :is="inline ? 'span' : 'div'"
+        v-else-if="field.type === 'attachment'"
+        class="content-widget-editor-field__attachment"
+      >
+        <input
+          type="text"
+          :value="primitiveTextValue()"
+          :placeholder="field.placeholder"
+          @input="handlePrimitiveInput"
+        />
+        <button type="button" class="content-widget-editor-field__attachment-btn" @click="openAttachmentSelector">
+          选择
+        </button>
+      </component>
+
       <input
         v-else
         type="text"
@@ -288,6 +351,26 @@ function moveItem(index: number, offset: number) {
             @change="updateItemField(index, itemField, $event)"
           />
 
+          <component
+            :is="inline ? 'span' : 'div'"
+            v-else-if="itemField.type === 'attachment'"
+            class="content-widget-editor-field__attachment"
+          >
+            <input
+              type="text"
+              :value="itemFieldTextValue(item, itemField)"
+              :placeholder="itemField.placeholder"
+              @input="updateItemField(index, itemField, $event)"
+            />
+            <button
+              type="button"
+              class="content-widget-editor-field__attachment-btn"
+              @click="openItemAttachmentSelector(index, itemField)"
+            >
+              选择
+            </button>
+          </component>
+
           <input
             v-else
             type="text"
@@ -298,6 +381,14 @@ function moveItem(index: number, offset: number) {
         </label>
       </component>
     </component>
+
+    <AttachmentSelectorModal
+      v-model:visible="attachmentSelectorVisible"
+      :accepts="activeAttachmentField?.accepts"
+      :min="1"
+      :max="1"
+      @select="onAttachmentSelect"
+    />
   </component>
 </template>
 
@@ -327,6 +418,53 @@ function moveItem(index: number, offset: number) {
 .content-widget-editor-field__label--check {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
+}
+
+.content-widget-editor-field__attachment {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.content-widget-editor-field__attachment input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 9px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #111827;
+  font: inherit;
+  font-weight: 400;
+  outline: none;
+}
+
+.content-widget-editor-field__attachment input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.content-widget-editor-field__attachment-btn {
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.content-widget-editor-field__attachment-btn:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #2563eb;
 }
 
 .content-widget-editor-field__check {
