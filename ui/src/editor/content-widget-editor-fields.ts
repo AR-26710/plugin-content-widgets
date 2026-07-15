@@ -17,6 +17,7 @@ const attrField = (
   type: ContentWidgetEditorField['type'] = 'text',
   placeholder?: string,
   options?: ContentWidgetEditorField['options'],
+  accepts?: ContentWidgetEditorField['accepts'],
 ): ContentWidgetEditorField => ({
   name,
   label,
@@ -24,6 +25,7 @@ const attrField = (
   source: 'attribute',
   placeholder,
   options,
+  accepts,
 })
 
 const listItemAttrField = (
@@ -306,6 +308,12 @@ export const contentWidgetEditorFields: Record<string, ContentWidgetEditorField[
     attrField('alt', '替代文本', 'text', '图片'),
     attrField('width', '宽度', 'text', '100%'),
     attrField('height', '高度', 'text', 'auto'),
+  ],
+  'xhhao-com-pdf': [
+    attrField('src', 'PDF 地址', 'attachment', 'https://example.com/document.pdf', undefined, ['application/pdf']),
+    attrField('title', '标题', 'text', 'PDF 文档'),
+    attrField('width', '宽度', 'text', '100%'),
+    attrField('height', '高度', 'text', '500px'),
   ],
   'xhhao-com-progress': [
     attrField('label', '标签', 'text', '进度'),

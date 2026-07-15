@@ -191,6 +191,16 @@ export const contentWidgetDefinitions: ContentWidgetDefinition[] = [
     keywords: ['pic', 'image'],
   },
   {
+    id: 'pdf',
+    title: 'PDF 预览',
+    description: '嵌入并预览 PDF 文件。',
+    category: '展示',
+    kind: 'block',
+    tagName: 'xhhao-com-pdf',
+    attributes: { src: '', title: 'PDF 文档' },
+    keywords: ['pdf', 'preview'],
+  },
+  {
     id: 'progress',
     title: '进度条',
     description: '展示百分比或任务进度。',
