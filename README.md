@@ -160,14 +160,22 @@ PDF 预览，用于在文章中嵌入并预览 PDF 文件，支持从 Halo 附�
 
 ## 前台资源
 
-插件启用后会自动向前台页面注入独立资源：
+插件启用后会自动向前台页面注入一个轻量的加载器脚本：
 
 ```html
-<script src="/plugins/content-widgets/assets/static/content-widgets.iife.js"></script>
-<link rel="stylesheet" href="/plugins/content-widgets/assets/static/content-widgets.css" />
+<script type="module" src="/plugins/content-widgets/assets/static/content-widgets-loader.js"></script>
 ```
 
 资源由插件自身构建和提供，不需要主题主动引入。
+
+### 按需加载
+
+每个组件的 JS 和 CSS 都独立分包，页面只加载实际用到的组件资源：
+
+- 页面没有使用任何组件时，只加载几 KB 的加载器，不会产生其他请求。
+- 页面包含 `xhhao-com-*` 标签时，加载器按需加载对应组件的 JS chunk 与 CSS，多个组件共享的运行时和基础样式只加载一次。
+- 组件按视口懒挂载：滚动到可视区域附近时才加载并初始化对应组件，首屏外的组件不会提前消耗资源。
+- 嵌套组件（如标签页内嵌复制命令）会先挂载内部组件，再挂载外部容器，保证渲染结果完整。
 
 ## PJAX 兼容
 
