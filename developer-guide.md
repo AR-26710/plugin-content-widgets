@@ -28,6 +28,8 @@ export function mount(element: HTMLElement) {
 ```
 
 3. 在 `src/widgets/index.ts` 中导入并追加到 `widgets` 数组。
+4. 在 `src/loader/registry.ts` 的 `widgetLoaders` 中注册动态导入，键的顺序与 `widgets/index.ts` 保持一致（嵌套挂载按此顺序优先挂载内部组件）。
+5. 在 `src/main/java/com/xhhao/contentwidgets/theme/ContentWidgetsHeadProcessor.java` 的 `WIDGET_TAGS` 中追加标签名。该清单用于生成首绘前隐藏未挂载标签的关键 CSS（防止无样式文本闪烁），漏加会导致新组件在挂载前直接露出原始文本。
 
 ## 二、声明编辑器组件（ui/src/editor/widgets）
 
