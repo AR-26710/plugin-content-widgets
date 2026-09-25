@@ -315,6 +315,15 @@ export const contentWidgetEditorFields: Record<string, ContentWidgetEditorField[
     attrField('width', '宽度', 'text', '100%'),
     attrField('height', '高度', 'text', '500px'),
   ],
+  'xhhao-com-bilibili': [
+    attrField('bvid', 'BV 号', 'text', 'BV1xx411c7mD'),
+    attrField('aid', 'AV 号', 'text', '与 BV 号二选一'),
+    attrField('title', '标题', 'text', '视频标题'),
+    attrField('page', '分 P', 'text', '1'),
+    attrField('autoplay', '自动播放', 'checkbox'),
+    attrField('width', '宽度', 'text', '100%'),
+    attrField('height', '高度', 'text', '默认 16:9'),
+  ],
   'xhhao-com-progress': [
     attrField('label', '标签', 'text', '进度'),
     attrField('value', '当前值', 'text', '70'),

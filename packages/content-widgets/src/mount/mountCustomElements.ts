@@ -1,6 +1,7 @@
 import Alert from "../components/Alert.svelte";
 import Annotation from "../components/Annotation.svelte";
 import Badge from "../components/Badge.svelte";
+import Bilibili from "../components/Bilibili.svelte";
 import Blur from "../components/Blur.svelte";
 import Button from "../components/Button.svelte";
 import CardList from "../components/CardList.svelte";
@@ -118,6 +119,19 @@ export function mountCustomElements(root: ParentNode = document) {
 
   root.querySelectorAll<HTMLElement>("xhhao-com-pdf").forEach((element) => {
     mountComponent(element, Pdf, parseProps(element));
+  });
+
+  root.querySelectorAll<HTMLElement>("xhhao-com-bilibili").forEach((element) => {
+    const props = parseProps(element);
+    mountComponent(element, Bilibili, {
+      bvid: asString(props.bvid, ""),
+      aid: asString(props.aid, ""),
+      page: asNumber(props.page, 1),
+      autoplay: asBoolean(props.autoplay),
+      title: asString(props.title, undefined),
+      width: asString(props.width, undefined),
+      height: asString(props.height, undefined),
+    });
   });
 
   root.querySelectorAll<HTMLElement>("xhhao-com-pic").forEach((element) => {

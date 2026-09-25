@@ -201,6 +201,16 @@ export const contentWidgetDefinitions: ContentWidgetDefinition[] = [
     keywords: ['pdf', 'preview'],
   },
   {
+    id: 'bilibili',
+    title: '哔哩哔哩视频',
+    description: '嵌入哔哩哔哩视频播放器。',
+    category: '展示',
+    kind: 'block',
+    tagName: 'xhhao-com-bilibili',
+    attributes: { bvid: '', title: '视频标题' },
+    keywords: ['bilibili', 'bvid', 'video', 'b站'],
+  },
+  {
     id: 'progress',
     title: '进度条',
     description: '展示百分比或任务进度。',
